@@ -6,6 +6,7 @@ import { h, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { MailOutlined, AppstoreOutlined } from '@ant-design/icons-vue'
 import { type MenuProps } from 'ant-design-vue'
+
 const current = ref<string[]>(['mail'])
 const items = ref<MenuProps['items']>([
   {
@@ -19,8 +20,15 @@ const items = ref<MenuProps['items']>([
     icon: () => h(AppstoreOutlined),
     label: 'about',
     title: 'about'
+  },
+  {
+    key: '/theme',
+    icon: () => h(AppstoreOutlined),
+    label: 'theme',
+    title: 'theme'
   }
 ])
+
 const router = useRouter()
 watch(current, () => {
   router.push(current.value[0])

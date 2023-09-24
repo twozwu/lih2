@@ -73,8 +73,8 @@
         </a-select>
       </template>
       <template v-if="index == 0 && column.key == 'action'">
-        <a-button type="primary">搜尋</a-button>
-        <a-button>清除</a-button>
+        <n-button type="primary">搜尋</n-button>
+        <n-button>清除</n-button>
       </template>
     </template>
     <template #expandedRowRender>
