@@ -136,7 +136,7 @@
                 <div class="bg-primary-7">Primary Color7</div>
                 <div class="bg-primary-8">Primary Color8</div>
                 <div class="bg-primary-9">Primary Color9</div>
-                <div class="bg-primary-10">Primary Color10</div>
+                <div class="bg-primary-10 color-primary-3">Primary Color10</div>
               </n-space>
               <n-divider />
               <n-space>

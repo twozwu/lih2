@@ -1,13 +1,36 @@
 <template>
+  <n-grid cols="2 l:7" x-gap="12 l:24" responsive="screen">
+    <n-form-item-gi path="age" label="學年度">
+      <n-input v-model:value="model.age" @keydown.enter.prevent />
+    </n-form-item-gi>
+    <n-form-item-gi path="password" label="學期">
+      <n-input v-model:value="model.password" type="password" />
+    </n-form-item-gi>
+    <n-form-item-gi path="abc" label="部別">
+      <n-select placeholder="部別" :options="options" />
+    </n-form-item-gi>
+    <n-form-item-gi path="nestedValue.path1" label="學制">
+      <n-select placeholder="學制" :options="generalOptions" />
+    </n-form-item-gi>
+    <n-form-item-gi path="nestedValue.path2" label="學院">
+      <n-select placeholder="學院" :options="generalOptions" />
+    </n-form-item-gi>
+    <n-form-item-gi path="nestedValue.path2" label="系所/科別">
+      <n-select placeholder="系所/科別" :options="generalOptions" />
+    </n-form-item-gi>
+    <n-form-item-gi path="nestedValue.path2" label="簽核狀態">
+      <n-select placeholder="簽核狀態" :options="generalOptions" />
+    </n-form-item-gi>
+  </n-grid>
+  <n-row>
+    <n-button class="ms-auto" :disabled="model.age === null" round type="primary" @click="handleValidateButtonClick">
+      验证
+    </n-button>
+  </n-row>
   <a-table :columns="columns" :data-source="data" :pagination="false">
     <template #bodyCell="{ index, column }">
       <template v-if="column.key == 'name'">
-        <a-select
-          class=""
-          placeholder="學年度"
-          show-search
-          :dropdown-match-select-width="false"
-        >
+        <a-select class="" placeholder="學年度" show-search :dropdown-match-select-width="false">
           <a-select-option value="">111</a-select-option>
           <a-select-option value="Http://">112</a-select-option>
           <a-select-option value="Https://">113</a-select-option>
@@ -27,37 +50,23 @@
       <template v-if="column.key == 'address'">
         <a-select placeholder="學制" show-search :dropdown-match-select-width="false">
           <a-select-option value=""></a-select-option>
-          <a-select-option value="5A429C57-3FC7-4B91-996A-5E216B537DE0"
-            >四年制技術系(春季班)</a-select-option
-          >
-          <a-select-option value="7146A61D-7459-4C8D-A9F5-85509C11045C"
-            >四年制技術系(秋季班)</a-select-option
-          >
+          <a-select-option value="5A429C57-3FC7-4B91-996A-5E216B537DE0">四年制技術系(春季班)</a-select-option>
+          <a-select-option value="7146A61D-7459-4C8D-A9F5-85509C11045C">四年制技術系(秋季班)</a-select-option>
           <a-select-option value="8DFFCFA4-35BB-4FC4-A688-2302D4836EF6">五年制專科</a-select-option>
-          <a-select-option value="BB150DEF-2089-467A-90B8-962744669D33"
-            >二年制技術系</a-select-option
-          >
-          <a-select-option value="001BDDFE-6F2E-468C-9086-9CCFE130C381"
-            >四年制技術系</a-select-option
-          >
-          <a-select-option value="754004E3-1E86-4F3C-A4C2-865B7D011E6C"
-            >二年制技術系學分班</a-select-option
-          >
+          <a-select-option value="BB150DEF-2089-467A-90B8-962744669D33">二年制技術系</a-select-option>
+          <a-select-option value="001BDDFE-6F2E-468C-9086-9CCFE130C381">四年制技術系</a-select-option>
+          <a-select-option value="754004E3-1E86-4F3C-A4C2-865B7D011E6C">二年制技術系學分班</a-select-option>
         </a-select>
       </template>
       <template v-if="column.key == 'college'">
         <a-select placeholder="學院" show-search :dropdown-match-select-width="false">
           <a-select-option value="495567B1-223D-4523-8E3A-9D35FEB1530C">工程學群</a-select-option>
-          <a-select-option value="429E266E-FDB0-4CC8-AF96-0BCEBD05F856"
-            >時尚與創意學群</a-select-option
-          >
+          <a-select-option value="429E266E-FDB0-4CC8-AF96-0BCEBD05F856">時尚與創意學群</a-select-option>
         </a-select>
       </template>
       <template v-if="column.key == 'department'">
         <a-select placeholder="系所/科別" show-search :dropdown-match-select-width="false">
-          <a-select-option value="8F65C808-B4FA-420E-A272-FEB79F6A5386"
-            >數位多媒體系</a-select-option
-          >
+          <a-select-option value="8F65C808-B4FA-420E-A272-FEB79F6A5386">數位多媒體系</a-select-option>
           <a-select-option value="BB02B97F-0859-4B42-8695-8C4967F57ED6">電機工程系</a-select-option>
           <a-select-option value="A536BA0D-9656-4B28-9C91-F3897580B540">資訊科技系</a-select-option>
         </a-select>
@@ -111,6 +120,23 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+const model = ref({
+  age: null,
+  password: null,
+  reenteredPassword: null
+});
+
+const options = [
+  {
+    label: '日間部',
+    value: 0
+  },
+  {
+    label: '夜間部',
+    value: 1
+  },
+]
 const columns = [
   { title: '學年度學期', dataIndex: 'name', key: 'name' },
   { title: '部別', dataIndex: 'age', key: 'age' },
@@ -139,6 +165,4 @@ const data = [
 ]
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

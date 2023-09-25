@@ -26,6 +26,12 @@ const items = ref<MenuProps['items']>([
     icon: () => h(AppstoreOutlined),
     label: 'theme',
     title: 'theme'
+  },
+  {
+    key: '/test',
+    icon: () => h(AppstoreOutlined),
+    label: 'test',
+    title: 'test'
   }
 ])
 

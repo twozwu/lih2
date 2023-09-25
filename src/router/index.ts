@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/theme',
       name: 'theme',
       component: () => import('../views/ThemeColors.vue')
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('../views/TestView.vue')
     }
   ]
 })
