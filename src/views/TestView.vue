@@ -122,10 +122,9 @@
     <n-form-item label="Nested Path" :show-feedback="false">
       <n-grid :cols="2" :x-gap="24">
         <n-form-item-gi path="nestedValue.path1">
-          <n-select
-            v-model:value="model.nestedValue.path2"
-            placeholder="Nested Path 2"
-            :options="generalOptions"
+          <n-input
+            v-model:value="model.nestedValue.path1"
+            placeholder="Nested Path 1"
           />
         </n-form-item-gi>
         <n-form-item-gi path="nestedValue.path2">
@@ -148,17 +147,17 @@
 </pre>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
-import { useMessage } from "naive-ui";
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
+import { FormInst, FormItemRule, useMessage } from 'naive-ui'
 
 export default defineComponent({
-  setup() {
-    const formRef = ref(null);
-    const message = useMessage();
+  setup () {
+    const formRef = ref<FormInst | null>(null)
+    const message = useMessage()
     return {
       formRef,
-      size: ref("medium"),
+      size: ref('medium'),
       model: ref({
         inputValue: null,
         textareaValue: null,
@@ -178,7 +177,7 @@ export default defineComponent({
         sliderValue: 0,
         transferValue: null
       }),
-      generalOptions: ["groode", "veli good", "emazing", "lidiculous"].map(
+      generalOptions: ['groode', 'veli good', 'emazing', 'lidiculous'].map(
         (v) => ({
           label: v,
           value: v
@@ -187,97 +186,97 @@ export default defineComponent({
       rules: {
         inputValue: {
           required: true,
-          trigger: ["blur", "input"],
-          message: "请输入 inputValue"
+          trigger: ['blur', 'input'],
+          message: '请输入 inputValue'
         },
         textareaValue: {
           required: true,
-          trigger: ["blur", "input"],
-          message: "请输入 textareaValue"
+          trigger: ['blur', 'input'],
+          message: '请输入 textareaValue'
         },
         selectValue: {
           required: true,
-          trigger: ["blur", "change"],
-          message: "请选择 selectValue"
+          trigger: ['blur', 'change'],
+          message: '请选择 selectValue'
         },
         multipleSelectValue: {
-          type: "array",
+          type: 'array',
           required: true,
-          trigger: ["blur", "change"],
-          message: "请选择 multipleSelectValue"
+          trigger: ['blur', 'change'],
+          message: '请选择 multipleSelectValue'
         },
         datetimeValue: {
-          type: "number",
+          type: 'number',
           required: true,
-          trigger: ["blur", "change"],
-          message: "请输入 datetimeValue"
+          trigger: ['blur', 'change'],
+          message: '请输入 datetimeValue'
         },
         nestedValue: {
           path1: {
             required: true,
-            trigger: ["blur", "input"],
-            message: "请输入 nestedValue.path1"
+            trigger: ['blur', 'input'],
+            message: '请输入 nestedValue.path1'
           },
           path2: {
             required: true,
-            trigger: ["blur", "change"],
-            message: "请输入 nestedValue.path2"
+            trigger: ['blur', 'change'],
+            message: '请输入 nestedValue.path2'
           }
         },
         checkboxGroupValue: {
-          type: "array",
+          type: 'array',
           required: true,
-          trigger: "change",
-          message: "请选择 checkboxGroupValue"
+          trigger: 'change',
+          message: '请选择 checkboxGroupValue'
         },
         radioGroupValue: {
           required: true,
-          trigger: "change",
-          message: "请选择 radioGroupValue"
+          trigger: 'change',
+          message: '请选择 radioGroupValue'
         },
         radioButtonGroupValue: {
           required: true,
-          trigger: "change",
-          message: "请选择 radioButtonGroupValue"
+          trigger: 'change',
+          message: '请选择 radioButtonGroupValue'
         },
         inputNumberValue: {
-          type: "number",
+          type: 'number',
           required: true,
-          trigger: ["blur", "change"],
-          message: "请输入 inputNumberValue"
+          trigger: ['blur', 'change'],
+          message: '请输入 inputNumberValue'
         },
         timePickerValue: {
-          type: "number",
+          type: 'number',
           required: true,
-          trigger: ["blur", "change"],
-          message: "请输入 timePickerValue"
+          trigger: ['blur', 'change'],
+          message: '请输入 timePickerValue'
         },
         sliderValue: {
-          validator(rule, value) {
-            return value > 50;
+          validator (rule: FormItemRule, value: number) {
+            return value > 50
           },
-          trigger: ["blur", "change"],
-          message: "sliderValue 需要大于 50"
+          trigger: ['blur', 'change'],
+          message: 'sliderValue 需要大于 50'
         },
         transferValue: {
-          type: "array",
+          type: 'array',
           required: true,
-          trigger: "change",
-          message: "请输入 transferValue"
+          trigger: 'change',
+          message: '请输入 transferValue'
         }
       },
-      handleValidateButtonClick(e) {
-        e.preventDefault();
+      handleValidateButtonClick (e: MouseEvent) {
+        e.preventDefault()
         formRef.value?.validate((errors) => {
           if (!errors) {
-            message.success("验证成功");
+            message.success('验证成功')
           } else {
-            console.log(errors);
-            message.error("验证失败");
+            console.log(errors)
+            message.error('验证失败')
           }
-        });
+        })
       }
-    };
+    }
   }
-});
+})
 </script>
