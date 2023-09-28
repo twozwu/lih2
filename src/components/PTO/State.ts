@@ -26,7 +26,6 @@ const programState = ref(defaultProgramState());
 //變更程式資料操作狀態
 const changeProgramStatus = (statusCode = "") => {
     const statusObject = programStatus.getTargetStatusObject(statusCode);
-    console.log(statusObject);
     programState.value.status = statusObject.code;
     programState.value.statusName = statusObject.name;
 };

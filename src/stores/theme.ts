@@ -6,7 +6,7 @@ import { useColorMode, useCycleList, type BasicColorSchema } from '@vueuse/core'
 
 export const useThemeStore = defineStore('theme', () => {
   /** 默认模式，一般设置为auto跟随系统 */
-  const defaultMode = ref<BasicColorSchema>('auto')
+  const defaultMode = ref<BasicColorSchema>('light')
   /** 模式列表 */
   const modeList = ref<BasicColorSchema[]>(['dark', 'light', 'auto'])
 

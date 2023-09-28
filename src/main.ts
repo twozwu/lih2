@@ -3,12 +3,15 @@ import 'virtual:uno.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import App from './App.vue'
+import router from './router'
+
+// 通用字体
+import 'vfonts/Lato.css'
 
 // Custom Package
 import Antd from 'ant-design-vue';
 
-import App from './App.vue'
-import router from './router'
 
 
 const app = createApp(App)

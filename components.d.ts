@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseTooltips: typeof import('./src/components/BaseElements/BaseTooltips.vue')['default']
     CRU: typeof import('./src/components/PTO/CRU.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
@@ -18,6 +19,7 @@ declare module 'vue' {
     IndexPage: typeof import('./src/components/PTO/IndexPage.vue')['default']
     Main: typeof import('./src/components/PTO/Main.vue')['default']
     NAlert: typeof import('naive-ui')['NAlert']
+    NAutoComplete: typeof import('naive-ui')['NAutoComplete']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBadge: typeof import('naive-ui')['NBadge']
     NButton: typeof import('naive-ui')['NButton']
@@ -72,5 +74,8 @@ declare module 'vue' {
     TheIndex: typeof import('./src/components/PTO/TheIndex.vue')['default']
     TheModal: typeof import('./src/components/PTO/TheModal.vue')['default']
     TheNavbar: typeof import('./src/components/TheNavbar.vue')['default']
+    TheTooltips: typeof import('./src/components/BaseElements/TheTooltips.vue')['default']
+    Tooltips: typeof import('./src/components/BaseElements/Tooltips.vue')['default']
+    ToolTips: typeof import('./src/components/BaseElements/ToolTips.vue')['default']
   }
 }

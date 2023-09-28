@@ -9,14 +9,15 @@ const status = {
   delete: { ...statusObject('delete', '刪除') }
 }
 
-const getTargetStatusObject = (code: String) => {
-  const outPut = statusObject()
-  Object.keys(status).forEach((e) => {
-    if (status[e as keyof typeof status].code === code) {
-      Object.assign(outPut, status[e as keyof typeof status])
-    }
-  })
-  return outPut
+const getTargetStatusObject = (code: string) => {
+  // const outPut = statusObject()
+  // Object.keys(status).forEach((e) => {
+  //   if (status[e as keyof typeof status].code === code) {
+  //     Object.assign(outPut, status[e as keyof typeof status])
+  //   }
+  // })
+  // return outPut
+  return status[code as keyof typeof status]
 }
 
 export default {

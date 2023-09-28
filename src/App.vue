@@ -3,20 +3,23 @@ import { RouterView } from 'vue-router'
 import Navbar from './components/TheNavbar.vue'
 import { useThemeStore } from '@/stores/theme'
 import { storeToRefs } from 'pinia'
+import { zhTW, dateZhTW } from 'naive-ui'
 
 const themeStore = useThemeStore()
-const { theme, themeConfig, themeOverrides, modeState } =
-  storeToRefs(themeStore)
+const { theme, themeConfig, themeOverrides, modeState } = storeToRefs(themeStore)
 // console.log(theme);
 </script>
 
 <template>
-  <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
+  <n-config-provider
+    :theme="theme"
+    :theme-overrides="themeOverrides"
+    :locale="zhTW"
+    :date-locale="dateZhTW"
+  >
     <n-message-provider>
       <header>
-        <div class="wrapper">
-          <Navbar />
-        </div>
+        <Navbar />
       </header>
 
       <RouterView />

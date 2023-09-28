@@ -1,43 +1,35 @@
 <template>
   <CRU ref="refCRU" />
   <n-card title="B1310 請假作業">
-    <div class="lg:p-1px overflow-auto">
+    <div class="lg:p-1px">
       <pto-search-menu />
     </div>
   </n-card>
-  <a-card title="查詢結果" class="overflow-auto mt-13" :bodyStyle="{ padding: '0' }">
-    <n-row class="gap-3 p-4">
+  <n-card title="查詢結果" class="mt-13">
+    <n-space class="gap-3 pb-3">
       <n-button class="" type="primary" @click="useItemAction('create')"> 新增 </n-button>
-    </n-row>
-    <a-table
-      :columns="columns"
-      :data-source="data"
-      :pagination="false"
-      :row-selection="rowSelection"
-      @resizeColumn="handleResizeColumn"
-    >
-      <template #bodyCell="{ index, column }">
+    </n-space>
+    <n-data-table :columns="columns" :data="data" :pagination="false" :row-key="columns.key"
+      @update:checked-row-keys="handleCheck">
+      <!-- <template #bodyCell="{ index, column }">
         <template v-if="column.key == 'action'">
-          <n-tooltip placement="top" trigger="hover">
-            <template #trigger>
-              <n-button circle tertiary type="primary">
-                <template #icon>
-                  <n-icon><Pencil /></n-icon>
-                </template>
-              </n-button>
-            </template>
-            <span>編輯</span>
-          </n-tooltip>
+          <BaseTooltips label="編輯">
+            <n-button circle tertiary type="primary">
+              <template #icon>
+                <n-icon><Pencil /></n-icon>
+              </template>
+            </n-button>
+          </BaseTooltips>
         </template>
         <template v-if="column.key == 'signature'">
           <span class="text-green-600">{{ data[index].signature }}</span>
         </template>
-      </template>
-    </a-table>
-  </a-card>
+      </template> -->
+    </n-data-table>
+  </n-card>
 </template>
   
-<script setup>
+<script setup lang="jsx">
 import { ref } from 'vue'
 import PtoSearchMenu from './PtoSearchMenu.vue'
 // import { theme } from 'ant-design-vue'
@@ -50,7 +42,26 @@ import { Pencil } from '@vicons/ionicons5'
 const refCRU = ref(null)
 
 const columns = ref([
-  { title: '維護', key: 'action', resizable: true, width: 100 },
+  {
+    type: 'selection'
+  },
+  {
+    title: '維護',
+    key: 'action',
+    resizable: true,
+    width: 100,
+    render(row) {
+      return (
+        <div class="flex gap-1">
+          <BaseTooltips label="編輯">
+            <n-button circle tertiary type="primary">
+              <n-icon><Pencil /></n-icon>
+            </n-button>
+          </BaseTooltips>
+        </div>
+      )
+    }
+  },
   { title: '學號', dataIndex: 'stuNo', key: 'stuNo', resizable: true, width: 100 },
   { title: '姓名', dataIndex: 'stuName', key: 'stuName', resizable: true, width: 100 },
   { title: '班級名稱', dataIndex: 'className', key: 'className', resizable: true, width: 100 },
@@ -102,23 +113,11 @@ const useItemAction = (code, item) => {
   refCRU.value.showModal = true
 }
 
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows)
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
-    name: record.name
-  })
-}
-function handleResizeColumn(w, col) {
-  col.width = w
+const checkedRowKeysRef = ref([]);
+function handleCheck(rowKeys) {
+  checkedRowKeysRef.value = rowKeys;
 }
 </script>
   
-  <style scoped>
-@media screen and (max-width: 375px) {
-}
-</style>
+<style scoped></style>
   
