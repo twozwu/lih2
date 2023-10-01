@@ -3,9 +3,8 @@
     <template #header>
       <div>{{ programState.statusName }}</div>
     </template>
-    <n-divider class="!mt-0" />
     <n-form ref="formRef" label-placement="left">
-      <n-grid cols="1 l:2" x-gap="24" responsive="screen">
+      <n-grid cols="1 m:2" x-gap="24" responsive="screen">
         <n-form-item-gi label="學年度學期：" path="inputValue">
           <span class="">108 第二學期</span>
         </n-form-item-gi>
@@ -36,10 +35,6 @@
         </n-form-item-gi>
         <n-form-item-gi label="請假日期：" path="selectValue">
           <n-date-picker type="datetimerange" clearable />
-          <!-- <a-range-picker
-            show-time
-            format="YYYY/MM/DD HH:mm:ss"
-          /> -->
         </n-form-item-gi>
         <n-form-item-gi label="假由：" path="textareaValue" span="24">
           <n-input

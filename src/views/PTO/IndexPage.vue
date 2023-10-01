@@ -1,5 +1,6 @@
 <template>
-  <CRU ref="refCRU" />
+  <!-- <CRU ref="refMain" /> -->
+  <Main ref="refMain" />
   <n-card title="B1310 請假作業">
     <div class="lg:p-1px">
       <pto-search-menu />
@@ -10,21 +11,7 @@
       <n-button class="" type="primary" @click="useItemAction('create')"> 新增 </n-button>
     </n-space>
     <n-data-table :columns="columns" :data="data" :pagination="false" :row-key="columns.key"
-      @update:checked-row-keys="handleCheck">
-      <!-- <template #bodyCell="{ index, column }">
-        <template v-if="column.key == 'action'">
-          <BaseTooltips label="編輯">
-            <n-button circle tertiary type="primary">
-              <template #icon>
-                <n-icon><Pencil /></n-icon>
-              </template>
-            </n-button>
-          </BaseTooltips>
-        </template>
-        <template v-if="column.key == 'signature'">
-          <span class="text-green-600">{{ data[index].signature }}</span>
-        </template>
-      </template> -->
+      :row-class-name="rowClassName" @update:checked-row-keys="handleCheck">
     </n-data-table>
   </n-card>
 </template>
@@ -37,9 +24,10 @@ import PtoSearchMenu from './PtoSearchMenu.vue'
 // const { token } = useToken()
 // console.log(token);
 import { programState, changeProgramStatus } from './State'
-import CRU from './CRU.vue'
+import Main from './MainPage.vue'
+// import CRU from './CRU.vue'
 import { Pencil } from '@vicons/ionicons5'
-const refCRU = ref(null)
+const refMain = ref(null)
 
 const columns = ref([
   {
@@ -54,7 +42,7 @@ const columns = ref([
       return (
         <div class="flex gap-1">
           <BaseTooltips label="編輯">
-            <n-button circle tertiary type="primary">
+            <n-button circle tertiary type="primary" onClick={() => useItemAction('edit', row)}>
               <n-icon><Pencil /></n-icon>
             </n-button>
           </BaseTooltips>
@@ -69,7 +57,7 @@ const columns = ref([
   { title: '假由', dataIndex: 'holidayReason', key: 'holidayReason', resizable: true, width: 100 },
   { title: '請假日期', dataIndex: 'holidayDate', key: 'holidayDate', resizable: true, width: 100 },
   { title: '節數', dataIndex: 'classOrdinal', key: 'classOrdinal', resizable: true, width: 100 },
-  { title: '簽核狀態', dataIndex: 'signature', key: 'signature', width: 100 }
+  { title: '簽核狀態', dataIndex: 'signature', key: 'signature', width: 100, className: 'success' }
 ])
 
 const data = [
@@ -107,17 +95,29 @@ const data = [
     signature: '已審核通過'
   }
 ]
+function rowClassName(row) {
+  if (row.signature != null) {
+    return 'success'
+  }
+  return ''
+}
+
 //定義CUD的方法集合
 const useItemAction = (code, item) => {
   changeProgramStatus(code)
-  refCRU.value.showModal = true
+  refMain.value.showModal = true
 }
 
+// checkBox
 const checkedRowKeysRef = ref([]);
 function handleCheck(rowKeys) {
   checkedRowKeysRef.value = rowKeys;
 }
 </script>
   
-<style scoped></style>
+<style scoped>
+:deep(.success) {
+  color: green !important;
+}
+</style>
   

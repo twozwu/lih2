@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import IndexPage from '../components/PTO/IndexPage.vue'
+import IndexPage from '@/views/PTO/IndexPage.vue'
 </script>
 
 <style scoped>

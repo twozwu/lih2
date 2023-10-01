@@ -1,5 +1,5 @@
 <template>
-  <n-grid cols="2 l:7" :collapsed-rows="2" x-gap="12 l:24" responsive="screen">
+  <n-grid cols="2 m:7" :collapsed-rows="2" x-gap="12 l:24" responsive="screen">
     <n-form-item-gi path="age" label="學年度">
       <n-select
         placeholder="學年度"

@@ -18,7 +18,7 @@ export default defineConfig({
     vueJsx(),
     AutoImport({
       imports: [
-        'vue',
+        // 'vue',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar']
         }
