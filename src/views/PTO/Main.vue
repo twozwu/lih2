@@ -3,13 +3,12 @@
         <template #header>
             <div>{{ programState.statusName }}</div>
         </template>
-        <CRU />
+        <!-- <CRU /> -->
 
         <n-tabs v-model:value="activeTab" type="line" animated default-value="CRU">
-            <!-- <n-tab-pane v-for="item in mainTab" :key="item.tabName" :name="item.tabName" :tab="item.tabName"
-                display-directive="show">
+            <n-tab-pane v-for="item in mainTab" :key="item.tabName" :name="item.tabName" :tab="item.tabName">
                 <component :is="item.component" />
-            </n-tab-pane> -->
+            </n-tab-pane>
             <!-- <n-tab-pane name="CRU" tab="Oasis">
                 <CRU />
             </n-tab-pane>

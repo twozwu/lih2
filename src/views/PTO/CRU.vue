@@ -1,8 +1,8 @@
 <template>
-  <n-modal v-model:show="showModal" preset="card" title="Dialog" class="w-11/12">
+  <!-- <n-modal v-model:show="showModal" preset="card" title="Dialog" class="w-11/12">
     <template #header>
       <div>{{ programState.statusName }}</div>
-    </template>
+    </template> -->
     <n-form ref="formRef" label-placement="left">
       <n-grid cols="1 m:2" x-gap="24" responsive="screen">
         <n-form-item-gi label="學年度學期：" path="inputValue">
@@ -48,12 +48,12 @@
         </n-form-item-gi>
       </n-grid>
     </n-form>
-    <template #action>
+    <!-- <template #action>
       <n-row class="gap-3">
         <n-button class="ms-auto" type="primary"> 儲存 </n-button>
       </n-row>
     </template>
-  </n-modal>
+  </n-modal> -->
 </template>
   
 <script lang="ts" setup>

@@ -1,11 +1,11 @@
 <template>
-  <n-data-table :columns="columns" :data="data" :pagination="pagination" :bordered="false">
+  <n-data-table :columns="columns" :data="data" :pagination="true" :bordered="false">
   </n-data-table>
   {{ test }}
 </template>
 
 <script lang="jsx" setup>
-import { h, defineComponent } from 'vue'
+import { h, defineComponent, ref } from 'vue'
 import { NButton, useMessage } from 'naive-ui'
 
 const createColumns = ({ play, data }) => {

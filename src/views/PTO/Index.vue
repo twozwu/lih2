@@ -24,7 +24,7 @@ import PtoSearchMenu from './PtoSearchMenu.vue'
 // const { token } = useToken()
 // console.log(token);
 import { programState, changeProgramStatus } from './State'
-import Main from './MainPage.vue'
+import Main from './Main.vue'
 // import CRU from './CRU.vue'
 import { Pencil } from '@vicons/ionicons5'
 const refMain = ref(null)

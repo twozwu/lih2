@@ -10,14 +10,11 @@ import router from './router'
 import 'vfonts/Lato.css'
 
 // Custom Package
-import Antd from 'ant-design-vue';
-
 
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(Antd)
 
 app.mount('#app')

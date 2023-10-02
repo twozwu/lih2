@@ -39,9 +39,7 @@ const changeProgramStatus = (statusCode = '') => {
 const baseAppPath = '/src/views/PTO/'
 const originTab = () => [
   defaultTabObject('CRU', baseAppPath + 'CRU.vue'),
-  defaultTabObject('abc', baseAppPath + 'PtoSearchMenu.vue')
 ]
-const mainTab = ref()
-// const mainTab = ref(originTab())
+const mainTab = ref(originTab())
 
 export { selectedItem, search, unselectedItems, programState, mainTab, changeProgramStatus }

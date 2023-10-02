@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import Navbar from './components/TheNavbar.vue'
+import Navbar from './components/Navbar.vue'
 import { useThemeStore } from '@/stores/theme'
 import { storeToRefs } from 'pinia'
 import { zhTW, dateZhTW } from 'naive-ui'
