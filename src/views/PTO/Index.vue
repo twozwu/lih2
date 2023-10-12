@@ -19,10 +19,11 @@
 <script setup lang="jsx">
 import { ref } from 'vue'
 import PtoSearchMenu from './PtoSearchMenu.vue'
-import { changeProgramStatus, dialogs } from './State'
+import { changeProgramStatus, dialogs, sharedItem } from './State'
 import { programStatus } from '@/configs'
 import Main from './Main.vue'
 import { Pencil, Trash } from '@vicons/ionicons5'
+import { useMessage } from 'naive-ui'
 
 const message = useMessage()
 const refMain = ref(null)
@@ -39,16 +40,25 @@ const columns = ref([
     render(row) {
       return (
         <div class="flex gap-1">
-          <BaseTooltips label="編輯">
+          <Tooltips label="編輯">
             <n-button circle tertiary type="primary" size="large" onClick={() => useItemAction(programStatus.edit.code, row)}>
               <n-icon size="25"><Pencil /></n-icon>
             </n-button>
-          </BaseTooltips>
-          <BaseTooltips label="刪除">
-            <n-button circle tertiary type="error" size="large" onClick={() => useItemAction(programStatus.delete.code, row)}>
-              <n-icon size="25"><Trash /></n-icon>
-            </n-button>
-          </BaseTooltips>
+          </Tooltips>
+          <Tooltips label="刪除">
+            <n-popconfirm class="max-w-fit" positiveButtonProps={{ type: 'error' }} onPositiveClick={() => deleteItem()}>
+              {{
+                trigger: () => (
+                  <n-button circle tertiary type="error" size="large">
+                    <n-icon size="25"><Trash /></n-icon>
+                  </n-button>
+                ),
+                default: () => (
+                  '請確認是否刪除'
+                )
+              }}
+            </n-popconfirm>
+          </Tooltips>
         </div>
       )
     }
@@ -106,9 +116,10 @@ function rowClassName(row) {
 }
 
 //定義CUD的方法集合
-const useItemAction = (code = "", item) => {
+const useItemAction = (code = "", item = {}) => {
   changeProgramStatus(code);
   if (code === programStatus.create.code) code = programStatus.edit.code;
+  sharedItem.value = { ...item };
   dialogs.value[code] = true;
 };
 
@@ -130,8 +141,8 @@ function handleCheck(rowKeys) {
 </script>
   
 <style scoped>
-/* :deep(.success) {
+:deep(.success) {
   color: green !important;
-} */
+}
 </style>
   

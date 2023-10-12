@@ -7,6 +7,7 @@ import { programStatus } from '@/configs'
  * 其他
  */
 //選擇的物件
+const sharedItem = ref({});
 const selectedItem = ref({})
 const search = ref({})
 const unselectedItems = ref({
@@ -45,7 +46,6 @@ const changeProgramStatus = (statusCode = '') => {
 const originTab = () => [
   {
     tabName: '主單', //頁簽名稱
-    tooltip: '', //提示若為空，預設就會顯示TABNAME
     visible: true, //是否顯示頁簽
     component: shallowRef(CRU) //src/為路徑起始點
   }
@@ -53,6 +53,7 @@ const originTab = () => [
 const mainTab = ref(originTab())
 
 export {
+  sharedItem,
   selectedItem,
   search,
   unselectedItems,
