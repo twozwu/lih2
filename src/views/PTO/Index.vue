@@ -1,5 +1,4 @@
 <template>
-  <!-- <CRU ref="refMain" /> -->
   <Main ref="refMain" />
   <n-card title="B1310 請假作業">
     <div class="lg:p-1px">
@@ -8,7 +7,8 @@
   </n-card>
   <n-card title="查詢結果" class="mt-13">
     <n-space class="gap-3 pb-3">
-      <n-button class="" type="primary" @click="useItemAction('create')"> 新增 </n-button>
+      <n-button class="" type="primary" @click="useItemAction(programStatus.create.code)"> 新增 </n-button>
+      <n-button class="" type="error" @click="deleteSelected"> 刪除 </n-button>
     </n-space>
     <n-data-table :columns="columns" :data="data" :pagination="false" :row-key="columns.key"
       :row-class-name="rowClassName" @update:checked-row-keys="handleCheck">
@@ -19,14 +19,12 @@
 <script setup lang="jsx">
 import { ref } from 'vue'
 import PtoSearchMenu from './PtoSearchMenu.vue'
-// import { theme } from 'ant-design-vue'
-// const { useToken } = theme
-// const { token } = useToken()
-// console.log(token);
-import { programState, changeProgramStatus } from './State'
+import { changeProgramStatus, dialogs } from './State'
+import { programStatus } from '@/configs'
 import Main from './Main.vue'
-// import CRU from './CRU.vue'
-import { Pencil } from '@vicons/ionicons5'
+import { Pencil, Trash } from '@vicons/ionicons5'
+
+const message = useMessage()
 const refMain = ref(null)
 
 const columns = ref([
@@ -42,8 +40,13 @@ const columns = ref([
       return (
         <div class="flex gap-1">
           <BaseTooltips label="編輯">
-            <n-button circle tertiary type="primary" onClick={() => useItemAction('edit', row)}>
-              <n-icon><Pencil /></n-icon>
+            <n-button circle tertiary type="primary" size="large" onClick={() => useItemAction(programStatus.edit.code, row)}>
+              <n-icon size="25"><Pencil /></n-icon>
+            </n-button>
+          </BaseTooltips>
+          <BaseTooltips label="刪除">
+            <n-button circle tertiary type="error" size="large" onClick={() => useItemAction(programStatus.delete.code, row)}>
+              <n-icon size="25"><Trash /></n-icon>
             </n-button>
           </BaseTooltips>
         </div>
@@ -103,21 +106,32 @@ function rowClassName(row) {
 }
 
 //定義CUD的方法集合
-const useItemAction = (code, item) => {
-  changeProgramStatus(code)
-  refMain.value.showModal = true
-}
+const useItemAction = (code = "", item) => {
+  changeProgramStatus(code);
+  if (code === programStatus.create.code) code = programStatus.edit.code;
+  dialogs.value[code] = true;
+};
+
+const deleteSelected = () => {
+  if (Object.keys(checkedRowKeysRef.value).length === 0) {
+    message.error("請先選擇要刪除的項目"),
+    {
+      keepAliveOnHover: true
+    }
+  }
+};
 
 // checkBox
 const checkedRowKeysRef = ref([]);
 function handleCheck(rowKeys) {
   checkedRowKeysRef.value = rowKeys;
+  console.log(checkedRowKeysRef.value);
 }
 </script>
   
 <style scoped>
-:deep(.success) {
+/* :deep(.success) {
   color: green !important;
-}
+} */
 </style>
   

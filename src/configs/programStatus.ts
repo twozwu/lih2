@@ -10,13 +10,6 @@ const status = {
 }
 
 const getTargetStatusObject = (code: string) => {
-  // const outPut = statusObject()
-  // Object.keys(status).forEach((e) => {
-  //   if (status[e as keyof typeof status].code === code) {
-  //     Object.assign(outPut, status[e as keyof typeof status])
-  //   }
-  // })
-  // return outPut
   return status[code as keyof typeof status]
 }
 

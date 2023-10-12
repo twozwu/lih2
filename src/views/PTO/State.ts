@@ -1,7 +1,7 @@
-import { ref, watch } from 'vue'
+import { ref, shallowRef } from 'vue'
+import CRU from './CRU.vue'
 //從config 拿功能狀態定義物件
 import { programStatus } from '@/configs'
-import { defaultTabObject } from '@/services/CommonService'
 
 /**
  * 其他
@@ -11,6 +11,12 @@ const selectedItem = ref({})
 const search = ref({})
 const unselectedItems = ref({
   filterEnrEnrollType: []
+})
+const dialogs = ref({
+  create: false,
+  edit: false,
+  delete: false,
+  studentInfo: false
 })
 
 /**
@@ -36,10 +42,22 @@ const changeProgramStatus = (statusCode = '') => {
  */
 /*功能頁簽設定*/
 //自定義頁簽物件
-const baseAppPath = '/src/views/PTO/'
 const originTab = () => [
-  defaultTabObject('CRU', baseAppPath + 'CRU.vue'),
+  {
+    tabName: '主單', //頁簽名稱
+    tooltip: '', //提示若為空，預設就會顯示TABNAME
+    visible: true, //是否顯示頁簽
+    component: shallowRef(CRU) //src/為路徑起始點
+  }
 ]
 const mainTab = ref(originTab())
 
-export { selectedItem, search, unselectedItems, programState, mainTab, changeProgramStatus }
+export {
+  selectedItem,
+  search,
+  unselectedItems,
+  programState,
+  mainTab,
+  dialogs,
+  changeProgramStatus
+}
