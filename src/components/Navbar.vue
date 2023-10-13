@@ -21,21 +21,21 @@ function renderIcon(icon) {
 const menuOptions = [
   {
     key: "/",
-    label: "首頁",
+    label: "請假作業",
     icon: renderIcon(BookIcon)
   },
+  // {
+  //   label: "關於",
+  //   // key: "/about",
+  //   icon: renderIcon(BookIcon),
+  // },
+  // {
+  //   label: "theme",
+  //   key: "/theme",
+  //   icon: renderIcon(BookIcon),
+  // },
   {
-    label: "關於",
-    key: "/about",
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: "theme",
-    key: "/theme",
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: "test",
+    label: "價單管理",
     key: "/test",
     icon: renderIcon(BookIcon),
   }

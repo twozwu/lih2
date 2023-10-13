@@ -10,7 +10,7 @@
       <n-button class="" type="primary" @click="useItemAction(programStatus.create.code)"> 新增 </n-button>
       <n-button class="" type="error" @click="deleteSelected"> 刪除 </n-button>
     </n-space>
-    <n-data-table :columns="columns" :data="data" :pagination="false" :row-key="columns.key"
+    <n-data-table :columns="columns" :data="data" :pagination="true" :row-key="columns.key"
       :row-class-name="rowClassName" @update:checked-row-keys="handleCheck">
     </n-data-table>
   </n-card>

@@ -1,5 +1,5 @@
 <template>
-    <n-modal v-model:show="dialogs.edit" preset="card" title="Dialog" class="w-11/12">
+    <n-modal v-model:show="dialogs.edit" preset="card" class="w-full md:w-[98%]">
         <template #header>
             <div>{{ programState.statusName }}</div>
         </template>

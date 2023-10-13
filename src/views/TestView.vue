@@ -1,18 +1,5 @@
 <template>
-  <n-button @click="showModal = true">
-    来吧
-  </n-button>
-  <n-modal v-model:show="showModal">
-    <n-card title="模态框" :bordered="false" size="huge" role="dialog" aria-modal="true">
-      <template #header-extra>
-        噢！
-      </template>
-      <CRU />
-      <template #footer>
-        尾部
-      </template>
-    </n-card>
-  </n-modal>
+  施工中...
 </template>
 
 <script setup>
