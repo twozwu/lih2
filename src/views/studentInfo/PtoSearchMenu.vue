@@ -1,6 +1,6 @@
 <template>
-  <n-grid cols="2 m:7" :collapsed-rows="2" x-gap="12 l:24" responsive="screen">
-    <n-form-item-gi path="age" label="學年度">
+  <n-grid cols="2 m:5" :collapsed-rows="2" x-gap="12 l:24" responsive="screen">
+    <n-form-item-gi path="age" label="學年度學期">
       <n-select placeholder="學年度" v-model:value="search.enrollYear" :options="[
         {
           label: '全部',
@@ -13,26 +13,6 @@
         {
           label: '112',
           value: 1
-        }
-      ]" />
-    </n-form-item-gi>
-    <n-form-item-gi path="password" label="學期">
-      <n-select placeholder="學期" v-model:value="search.semester" :options="[
-        {
-          label: '全部',
-          value: null
-        },
-        {
-          label: '第一學期',
-          value: 0
-        },
-        {
-          label: '第二學期',
-          value: 1
-        },
-        {
-          label: '第三學期',
-          value: 2
         }
       ]" />
     </n-form-item-gi>
@@ -120,34 +100,6 @@
         }
       ]" />
     </n-form-item-gi>
-    <n-form-item-gi path="nestedValue.path2" label="簽核狀態">
-      <n-select placeholder="簽核狀態" :options="[
-        {
-          label: '全部',
-          value: 0
-        },
-        {
-          label: '未送出',
-          value: 1
-        },
-        {
-          label: '流程中',
-          value: 2
-        },
-        {
-          label: '退回',
-          value: 3
-        },
-        {
-          label: '不通過',
-          value: 4
-        },
-        {
-          label: '已通過',
-          value: 5
-        }
-      ]" />
-    </n-form-item-gi>
     <n-form-item-gi path="nestedValue.path2" label="年級">
       <n-select placeholder="年級" :options="[
         {
@@ -188,11 +140,8 @@
         }
       ]" />
     </n-form-item-gi>
-    <n-form-item-gi path="nestedValue.path2" label="學號" class="lg:!col-span-2">
+    <n-form-item-gi path="nestedValue.path2" label="學號/姓名" class="lg:!col-span-2">
       <n-input placeholder="學號" />
-    </n-form-item-gi>
-    <n-form-item-gi path="nestedValue.path2" label="姓名" class="lg:!col-span-2">
-      <n-input placeholder="姓名" />
     </n-form-item-gi>
   </n-grid>
   <n-row class="gap-3">

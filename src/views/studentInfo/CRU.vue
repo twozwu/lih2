@@ -11,7 +11,7 @@
     <n-grid cols="1 m:2" x-gap="24" responsive="screen">
       <n-form-item-gi label="學生資訊：" path="selectValue">
         <n-auto-complete placeholder="學生資訊" />
-        <n-button class="" type="primary" @click="dialogs.studentInfo = true">...</n-button>
+        <n-button class="" type="primary">...</n-button>
       </n-form-item-gi>
       <n-form-item-gi label="假別：" path="selectValue">
         <n-select placeholder="假別" :options="[
@@ -67,7 +67,7 @@
   
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { programState, dialogs } from './State'
+import { programState } from './State'
 import { breakpoint } from '@/utils/breakpoint'
 
 const showModal = ref(false)

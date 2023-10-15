@@ -19,18 +19,11 @@
             </n-tab-pane> -->
         </n-tabs>
     </n-modal>
-    <n-modal v-model:show="dialogs.studentInfo" preset="card" class="w-full md:w-[98%]">
-        <template #header>
-            <div>學生資料</div>
-        </template>
-        <StudentInfo />
-    </n-modal>
 </template>
     
 <script lang="jsx" setup>
 import { ref } from 'vue'
 import { programState, mainTab, dialogs } from './State'
-import StudentInfo from '@/views/studentInfo/Index.vue'
 // import CRU from './CRU.vue'
 
 const activeTab = ref('主單')
