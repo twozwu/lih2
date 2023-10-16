@@ -48,6 +48,11 @@ const originTab = () => [
     tabName: '主單', //頁簽名稱
     visible: true, //是否顯示頁簽
     component: shallowRef(CRU) //src/為路徑起始點
+  },
+  {
+    tabName: '簽核', //頁簽名稱
+    visible: true, //是否顯示頁簽
+    component: '施工中...' //src/為路徑起始點
   }
 ]
 const mainTab = ref(originTab())

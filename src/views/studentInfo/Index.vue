@@ -18,8 +18,9 @@ import PtoSearchMenu from './PtoSearchMenu.vue'
 import { changeProgramStatus, dialogs, sharedItem } from './State'
 import { programStatus } from '@/configs'
 import Main from './Main.vue'
-import { Pencil, Checkmark } from '@vicons/ionicons5'
+import { Checkmark } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
+import { dialogs as b13Dialogs, sharedItem as b13SharedItem } from '@/views/B13/State'
 
 const message = useMessage()
 const refMain = ref(null)
@@ -34,7 +35,7 @@ const columns = ref([
       return (
         <div class="flex gap-1">
           <Tooltips label="選擇">
-            <n-button circle tertiary type="primary" size="large">
+            <n-button circle tertiary type="primary" size="large" onClick={ () => choose(row)}>
               <n-icon size="25"><Checkmark /></n-icon>
             </n-button>
           </Tooltips>
@@ -105,21 +106,11 @@ function rowClassName(row) {
 }
 
 //定義CUD的方法集合
-const useItemAction = (code = "", item = {}) => {
-  changeProgramStatus(code);
-  if (code === programStatus.create.code) code = programStatus.edit.code;
-  sharedItem.value = { ...item };
-  dialogs.value[code] = true;
+const choose = (row) => {
+  b13SharedItem.value.studentInfo = { ...row };
+  b13Dialogs.value.studentInfo = false
 };
 
-const deleteSelected = () => {
-  if (Object.keys(checkedRowKeysRef.value).length === 0) {
-    message.error("請先選擇要刪除的項目"),
-    {
-      keepAliveOnHover: true
-    }
-  }
-};
 
 // checkBox
 const checkedRowKeysRef = ref([]);
@@ -134,4 +125,4 @@ function handleCheck(rowKeys) {
   color: green !important;
 }
 </style>
-  
+  @/views/B13/State

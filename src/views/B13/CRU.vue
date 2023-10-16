@@ -9,8 +9,9 @@
       </n-form-item-gi></n-grid></n-form>
   <n-form ref="formRef" :label-placement="breakpoint.md ? 'left' : ''">
     <n-grid cols="1 m:2" x-gap="24" responsive="screen">
-      <n-form-item-gi label="學生資訊：" path="selectValue">
-        <n-auto-complete placeholder="學生資訊" />
+      <n-form-item-gi label="學生資訊：" path="selectValue" :validation-status="inputValidationStatus"
+        :feedback="inputFeedback">
+        <n-input placeholder="請選擇學生" v-model:value="editedItem.studentNo" disabled />
         <n-button class="" type="primary" @click="dialogs.studentInfo = true">...</n-button>
       </n-form-item-gi>
       <n-form-item-gi label="假別：" path="selectValue">
@@ -60,19 +61,50 @@
 
     </n-grid>
     <div class="flex">
-      <n-button class="ms-auto" type="primary"> 儲存 </n-button>
+      <n-button class="ms-auto" type="primary" @click="formRef.validate()"> 儲存 </n-button>
     </div>
   </n-form>
 </template>
   
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { programState, dialogs } from './State'
+<script setup>
+import { ref, watch, computed } from 'vue'
+import { programState, dialogs, sharedItem } from './State'
 import { breakpoint } from '@/utils/breakpoint'
 
-const showModal = ref(false)
+//預設項目 需要設定使用欄位 防呆驗證才會作用
+const defaultItem = () => {
+  return {
+    semester: "108 第二學期", // 學期
+    applyDate: "2023-10-02 08:11:16", // 申請日期
+    studentNo: "", // 學生資訊
+    ptoType: "", // 請假類別
+    ptoDate: "", // 請假日期
+    reason: "", // 理由
+  };
+};
+const editedItem = ref(defaultItem());
 const fileList = ref([])
-defineExpose({ showModal })
+const formRef = ref(null);
+
+function createStatus(value) {
+  if (value) return undefined
+  else return 'error'
+}
+
+function createFeedback(value) {
+  if (value) return `班級：${sharedItem.value.studentInfo?.className}、學號：${editedItem.value.studentNo}、姓名：${sharedItem.value.studentInfo?.stuName}`
+  else return `請選擇學生`
+}
+const inputValidationStatus = computed(() => {
+  return createStatus(editedItem.value.studentNo);
+})
+const inputFeedback = computed(() => {
+  return createFeedback(editedItem.value.studentNo);
+})
+
+watch(() => sharedItem.value.studentInfo, () => {
+  editedItem.value.studentNo = sharedItem.value.studentInfo.stuNo
+})
 </script>
 
 <style>

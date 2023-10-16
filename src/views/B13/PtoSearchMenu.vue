@@ -208,33 +208,6 @@ const search = ref({
   semester: 0,
   reenteredPassword: null
 })
-
-const columns = [
-  { title: '學年度學期', dataIndex: 'name', key: 'name' },
-  { title: '部別', dataIndex: 'age', key: 'age' },
-  { title: '學制', dataIndex: 'address', key: 'address' },
-  { title: '學院', dataIndex: 'school', key: 'college' },
-  { title: '系所/科別', dataIndex: 'division', key: 'department' },
-  { title: '簽核狀態', dataIndex: 'signOff', key: 'signature' },
-  { title: 'Action', key: 'action' }
-]
-const columns2 = [
-  { title: '年級', dataIndex: 'name', key: 'name' },
-  { title: '班級', dataIndex: 'age', key: 'age' },
-  { title: '學號', dataIndex: 'stuNo', key: 'stuNo' },
-  { title: '姓名', dataIndex: 'stuName', key: 'stuName' },
-  { title: '', dataIndex: 'school', key: 'empty', width: 250 }
-]
-
-const data = [
-  {
-    key: 1,
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Parkabc',
-    description: 'My name is John Brown, I am 32 years old, living in New York No. 1 Lake Park.'
-  }
-]
 </script>
 
 <style scoped></style>

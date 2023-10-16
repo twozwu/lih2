@@ -33,5 +33,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    outDir: 'D:\\ALLTOP\\www\\ALLTOP\\module_lit\\vue\\public',
   }
 })
