@@ -35,7 +35,7 @@ const menuOptions = [
   //   icon: renderIcon(BookIcon),
   // },
   {
-    label: "價單管理",
+    label: "假單管理",
     key: "/test",
     icon: renderIcon(BookIcon),
   }

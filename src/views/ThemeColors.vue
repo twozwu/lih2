@@ -104,10 +104,10 @@
               </n-space>
               <n-divider />
               <n-space>
-                <div class="color-primary border-solid border border-primary">
+                <div class="border border-solid border-primary color-primary">
                   Primary Color
                 </div>
-                <div class="color-primary text-opacity-50">
+                <div class="text-opacity-50 color-primary">
                   Primary Color 透明度50%
                 </div>
                 <div class="color-primary-1">Primary Color1</div>
@@ -124,7 +124,7 @@
               <n-divider />
               <n-space>
                 <div class="bg-primary">Primary Color</div>
-                <div class="bg-primary text-opacity-50">
+                <div class="text-opacity-50 bg-primary">
                   Primary Color 透明度50%
                 </div>
                 <div class="bg-primary-1">Primary Color1</div>
@@ -140,10 +140,10 @@
               </n-space>
               <n-divider />
               <n-space>
-                <div class="color-info border-solid border border-info">
+                <div class="border border-solid border-info color-info">
                   Info Color
                 </div>
-                <div class="color-info text-opacity-50">Info Color 透明度50%</div>
+                <div class="text-opacity-50 color-info">Info Color 透明度50%</div>
                 <div class="color-info-1">Info Color1</div>
                 <div class="color-info-2">Info Color2</div>
                 <div class="color-info-3">Info Color3</div>
@@ -158,7 +158,7 @@
               <n-divider />
               <n-space>
                 <div class="bg-info">Info Color</div>
-                <div class="bg-info text-opacity-50">Info Color 透明度50%</div>
+                <div class="text-opacity-50 bg-info">Info Color 透明度50%</div>
                 <div class="bg-info-1">Info Color1</div>
                 <div class="bg-info-2">Info Color2</div>
                 <div class="bg-info-3">Info Color3</div>
@@ -173,10 +173,10 @@
               <n-divider />
   
               <n-space>
-                <div class="color-success border-solid border border-success">
+                <div class="border border-solid border-success color-success">
                   Success Color
                 </div>
-                <div class="color-success text-opacity-50">
+                <div class="text-opacity-50 color-success">
                   Success Color 透明度50%
                 </div>
                 <div class="color-success-1">Success Color1</div>
@@ -193,7 +193,7 @@
               <n-divider />
               <n-space>
                 <div class="bg-success">Success Color</div>
-                <div class="bg-success text-opacity-50">
+                <div class="text-opacity-50 bg-success">
                   Success Color 透明度50%
                 </div>
                 <div class="bg-success-1">Success Color1</div>
@@ -210,10 +210,10 @@
               <n-divider />
   
               <n-space>
-                <div class="color-warning border-solid border border-warning">
+                <div class="border border-solid border-warning color-warning">
                   Warning Color
                 </div>
-                <div class="color-warning text-opacity-50">
+                <div class="text-opacity-50 color-warning">
                   Warning Color 透明度50%
                 </div>
                 <div class="color-warning-1">Warning Color1</div>
@@ -230,7 +230,7 @@
               <n-divider />
               <n-space>
                 <div class="bg-warning">Warning Color</div>
-                <div class="bg-warning text-opacity-50">
+                <div class="text-opacity-50 bg-warning">
                   Warning Color 透明度50%
                 </div>
                 <div class="bg-warning-1">Warning Color1</div>
@@ -247,10 +247,10 @@
               <n-divider />
   
               <n-space>
-                <div class="color-error border-solid border border-error">
+                <div class="border border-solid border-error color-error">
                   Error Color
                 </div>
-                <div class="color-error text-opacity-50">
+                <div class="text-opacity-50 color-error">
                   Error Color 透明度50%
                 </div>
                 <div class="color-error-1">Error Color1</div>
@@ -267,7 +267,7 @@
               <n-divider />
               <n-space>
                 <div class="bg-error">Error Color</div>
-                <div class="bg-error text-opacity-50">Error Color 透明度50%</div>
+                <div class="text-opacity-50 bg-error">Error Color 透明度50%</div>
                 <div class="bg-error-1">Error Color1</div>
                 <div class="bg-error-2">Error Color2</div>
                 <div class="bg-error-3">Error Color3</div>

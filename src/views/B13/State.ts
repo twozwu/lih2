@@ -1,13 +1,14 @@
 import { ref, shallowRef } from 'vue'
-import CRU from './CRU.vue'
 //從config 拿功能狀態定義物件
 import { programStatus } from '@/configs'
+import CRU from './CRU.vue'
+import Test from './Test.vue'
 
 /**
  * 其他
  */
 //選擇的物件
-const sharedItem = ref({});
+const sharedItem = ref({})
 const selectedItem = ref({})
 const search = ref({})
 const unselectedItems = ref({
@@ -45,14 +46,14 @@ const changeProgramStatus = (statusCode = '') => {
 //自定義頁簽物件
 const originTab = () => [
   {
-    tabName: '主單', //頁簽名稱
-    visible: true, //是否顯示頁簽
-    component: shallowRef(CRU) //src/為路徑起始點
+    tabName: '主單',
+    visible: true,
+    component: shallowRef(CRU)
   },
   {
-    tabName: '簽核', //頁簽名稱
-    visible: true, //是否顯示頁簽
-    component: '施工中...' //src/為路徑起始點
+    tabName: '簽核',
+    visible: true,
+    component: shallowRef(Test)
   }
 ]
 const mainTab = ref(originTab())

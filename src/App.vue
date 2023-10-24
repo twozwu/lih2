@@ -11,18 +11,15 @@ const { theme, themeConfig, themeOverrides, modeState } = storeToRefs(themeStore
 </script>
 
 <template>
-  <n-config-provider
-    :theme="theme"
-    :theme-overrides="themeOverrides"
-    :locale="zhTW"
-    :date-locale="dateZhTW"
-  >
+  <n-config-provider :theme="theme" :theme-overrides="themeOverrides" :locale="zhTW" :date-locale="dateZhTW">
     <n-message-provider>
-      <header>
-        <Navbar />
-      </header>
+      <n-dialog-provider>
+        <header>
+          <Navbar />
+        </header>
 
-      <RouterView />
+        <RouterView />
+      </n-dialog-provider>
     </n-message-provider>
   </n-config-provider>
 </template>

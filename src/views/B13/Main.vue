@@ -1,5 +1,5 @@
 <template>
-    <n-modal v-model:show="dialogs.edit" preset="card" class="w-full md:w-[98%]">
+    <n-modal v-model:show="dialogs.edit" preset="card" class="w-full md:w-[98%]" :on-after-leave="resetModal">
         <template #header>
             <div>{{ programState.statusName }}</div>
         </template>
@@ -34,6 +34,9 @@ import StudentInfo from '@/views/studentInfo/Index.vue'
 // import CRU from './CRU.vue'
 
 const activeTab = ref('主單')
+function resetModal() {
+    activeTab.value = '主單'
+}
 </script>
   
 <style></style>

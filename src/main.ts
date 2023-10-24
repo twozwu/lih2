@@ -11,7 +11,6 @@ import 'vfonts/Lato.css'
 
 // Custom Package
 
-
 const app = createApp(App)
 
 app.use(createPinia())

@@ -10,8 +10,8 @@
       <n-button class="" type="primary" @click="useItemAction(programStatus.create.code)"> 新增 </n-button>
       <n-button class="" type="error" @click="deleteSelected"> 刪除 </n-button>
     </n-space>
-    <n-data-table :columns="columns" :data="data" :pagination="true" :row-key="columns.key"
-      :row-class-name="rowClassName" @update:checked-row-keys="handleCheck">
+    <n-data-table :columns="columns" :data="data" :pagination="true" :row-key="columns.key" :row-class-name="rowClassName"
+      @update:checked-row-keys="handleCheck">
     </n-data-table>
   </n-card>
 </template>
@@ -25,6 +25,7 @@ import Main from './Main.vue'
 import { Pencil, Trash } from '@vicons/ionicons5'
 import { useMessage } from 'naive-ui'
 
+const dialog = useDialog()
 const message = useMessage()
 const refMain = ref(null)
 
@@ -46,18 +47,20 @@ const columns = ref([
             </n-button>
           </Tooltips>
           <Tooltips label="刪除">
-            <n-popconfirm class="max-w-fit" positiveButtonProps={{ type: 'error' }} onPositiveClick={() => deleteItem()}>
-              {{
-                trigger: () => (
-                  <n-button circle tertiary type="error" size="large">
-                    <n-icon size="25"><Trash /></n-icon>
-                  </n-button>
-                ),
-                default: () => (
-                  '請確認是否刪除'
-                )
-              }}
-            </n-popconfirm>
+            <n-button circle tertiary type="error" size="large" onClick={() => dialog.warning({
+              title: '警告',
+              content: '請確認是否刪除？',
+              positiveText: '確定',
+              negativeText: '取消',
+              onPositiveClick: () => {
+                message.success('确定')
+              },
+              onNegativeClick: () => {
+                message.error('不确定')
+              }
+            })}>
+              <n-icon size="25"><Trash /></n-icon>
+            </n-button>
           </Tooltips>
         </div>
       )

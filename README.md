@@ -38,6 +38,16 @@ npm run dev
 ```sh
 npm run build
 ```
+- 編譯路徑修改
+    請至 `vite.config.ts` 檔案修改，範例如下：
+    ```jsx
+    // .\vite.config.ts
+    export default defineConfig({
+        build: {
+            outDir: 'D:\\ALLTOP\\www\\ALLTOP\\module_lit\\vue\\public',
+        }
+    })
+    ```
 
 ### Lint with [ESLint](https://eslint.org/)
 
