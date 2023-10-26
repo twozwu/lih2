@@ -2,7 +2,7 @@
   <Main ref="refMain" />
   <n-card>
     <div class="lg:p-1px">
-      <pto-search-menu />
+      <search-menu />
     </div>
   </n-card>
   <n-card title="查詢結果" class="mt-13">
@@ -14,7 +14,7 @@
   
 <script setup lang="jsx">
 import { ref } from 'vue'
-import PtoSearchMenu from './PtoSearchMenu.vue'
+import SearchMenu from './SearchMenu.vue'
 import { changeProgramStatus, dialogs, sharedItem } from './State'
 import { programStatus } from '@/configs'
 import Main from './Main.vue'
