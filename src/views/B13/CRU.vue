@@ -52,7 +52,7 @@
       <n-form-item-gi>
         <n-upload action="https://www.mocky.io/v2/5e4bafc63100007100d8b70f" :default-file-list="fileList"
           list-type="image">
-          <n-button>上传文件</n-button>
+          <n-button>上傳文件</n-button>
         </n-upload>
       </n-form-item-gi>
     </n-grid>
